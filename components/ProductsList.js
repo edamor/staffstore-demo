@@ -1,7 +1,11 @@
-import NextImage from "./Image"
+import NextImage from "@/components/Image"
 import Link from "next/link"
+import { useRouter } from 'next/router'
 
 const ProductsList = ({ products }) => {
+
+  const router = useRouter();
+
   return (
     <div className="m-6 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-8">
       {products.map((_product) => (
@@ -9,7 +13,7 @@ const ProductsList = ({ products }) => {
           key={_product.id}
           className="border rounded-lg bg-gray-100 hover:shadow-lg shadow-md"
         >
-          <Link href={`/products/${_product.handle}`}>
+          <Link href={`/shop/${router.query.categorySlug}/${_product.handle}`}>
             <a>
               <div className="w-full bg-white">
                 <div className="rounded-t-lg pt-2 pb-2 w-1/2 mx-auto">

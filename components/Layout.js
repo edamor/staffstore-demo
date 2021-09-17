@@ -1,7 +1,7 @@
-import CategoryButtons from "./CategoryButtons"
-import Footer from "./Footer"
-import Navbar from "./Navbar"
-import NextImage from "./Image"
+import CategoryButtons from "@/components/CategoryButtons"
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
+import Spinner from "./Spinner"
 
 const Layout = ({ children, navItems }) => {
   return (
@@ -9,7 +9,10 @@ const Layout = ({ children, navItems }) => {
       <div className="max-w-screen-lg flex flex-col min-h-screen w-full">
         <Navbar />
         <CategoryButtons categories={navItems} />
-        <div className="flex-grow">{children}</div>
+        
+        <div className="flex-grow">
+          {children}
+        </div>
         <Footer />
       </div>
     </div>

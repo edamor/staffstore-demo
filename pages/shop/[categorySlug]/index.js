@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-import ProductsList from "../../components/ProductsList"
-import { getCategories, getCategory } from "../../utils/api"
+import ProductsList from "@/components/ProductsList"
+import { getCategories, getCategory } from "@/utils/api"
 
 const CategoryPage = ({ category }) => {
   const router = useRouter()
@@ -22,7 +22,7 @@ const CategoryPage = ({ category }) => {
 export default CategoryPage
 
 export async function getStaticProps({ params }) {
-  const category = await getCategory(params.slug)
+  const category = await getCategory(params.categorySlug)
   return { props: { category } }
 }
 
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
   return {
     paths: categories.map((_category) => {
       return {
-        params: { slug: _category.slug },
+        params: { categorySlug: _category.slug },
       }
     }),
     fallback: true,

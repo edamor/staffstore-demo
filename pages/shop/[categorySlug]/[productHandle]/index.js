@@ -1,8 +1,8 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-
-import NextImage from "../../components/Image"
-import { getProducts, getProduct } from "../../utils/api"
+import NextImage from "@/components/Image"
+import { getProducts, getProduct } from "@/utils/api"
+import Disclaimer from "@/components/Disclaimer"
 
 const ProductPage = ({ product }) => {
   const router = useRouter()
@@ -19,13 +19,27 @@ const ProductPage = ({ product }) => {
         {/* <NextImage media={product.images[0]} /> */}
         <img {...product.images[0]} />
       </div>
-      <div className="w-full p-5 flex flex-col justify-between">
+      <div className="w-full p-5 flex flex-col justify-between gap-3">
         <div>
           <h4 className="mt-1 font-semibold text-lg leading-tight truncate text-gray-700">
-            {product.title} - ${product.price}
+            {product.title} - ₱{product.price}
           </h4>
           <div className="mt-1 text-gray-600">{product.description}</div>
         </div>
+        <div className="text-gray-600 text-sm md:text-base leading-tight">
+          <p className="font-semibold">Contact Us</p>
+          <div>
+            <span>Mobile: </span>
+            <span>0926-0995188</span>
+          </div>
+          <div>
+            <span>Landline: </span>
+            <span>8801-6349, </span>
+            <span>8806-8723, </span>
+            <span>8805-5927</span>
+          </div>
+        </div>
+        <Disclaimer />
       </div>
     </div>
   )
@@ -34,16 +48,16 @@ const ProductPage = ({ product }) => {
 export default ProductPage
 
 export async function getStaticProps({ params }) {
-  const product = await getProduct(params.slug)
+  const product = await getProduct(params.productHandle)
   return { props: { product } }
 }
 
 export async function getStaticPaths() {
   const products = await getProducts()
   return {
-    paths: products.map((_product) => {
+    paths: products.map(({ handle, category }) => {
       return {
-        params: { slug: _product.handle },
+        params: { categorySlug: category.slug, productHandle: handle },
       }
     }),
     fallback: true,

@@ -1,16 +1,19 @@
 import App from "next/app"
 import Head from "next/head"
-import Layout from "../components/Layout"
-import { getNavItems } from "../utils/api"
-import "../styles/index.css"
+import Layout from "@/components/Layout"
+import { getNavItems } from "@/utils/api"
+import "styles/index.css"
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <Layout navItems={pageProps.navItems}>
+    <>
       <Head>
+        <link rel="icon" href="/favicon.png" />
       </Head>
-      <Component {...pageProps} />
-    </Layout>
+      <Layout navItems={pageProps.navItems}>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   )
 }
 

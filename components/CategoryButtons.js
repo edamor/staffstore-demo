@@ -9,7 +9,7 @@ const CategoryButtons = ({ categories = [] }) => {
         </a>
       </Link>
       {categories.map((_category) => (
-        <Link href={`/categories/${_category.slug}`} key={_category.id}>
+        <Link href={`/shop/${_category.slug}`} key={_category.id}>
           <a className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
             {_category.name}
           </a>
