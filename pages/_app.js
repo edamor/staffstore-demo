@@ -26,7 +26,8 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx)
   // Fetch global site settings from Strapi
   // const navItems = await getNavItems()
-  const navItems = await fetchAPI(`/nav-items`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/nav-items`)
+  const navItems = await response.json()
   // Pass the data to our page via props
   return { ...appProps, pageProps: { navItems, path: ctx.pathname } }
 }

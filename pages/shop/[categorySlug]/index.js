@@ -23,13 +23,15 @@ export default CategoryPage
 
 export async function getStaticProps({ params }) {
   // const category = await getCategory(params.categorySlug)
-  const category = await fetchAPI(`/categories?slug=${params.categorySlug}`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories?slug=${params.categorySlug}`)
+  const category = response.json()
   return { props: { category } }
 }
 
 export async function getStaticPaths() {
   // const categories = await getCategories()
-  const categories = await fetchAPI("/categories")
+  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories`)
+  const categories = await response.json()
   return {
     paths: categories.map((_category) => {
       return {

@@ -49,13 +49,15 @@ export default ProductPage
 
 export async function getStaticProps({ params }) {
   // const product = await getProduct(params.productHandle)
-  const product = await fetchAPI(`/products?handle=${slug}`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?handle=${slug}`)
+  const product = await response.json()
   return { props: { product } }
 }
 
 export async function getStaticPaths() {
   // const products = await getProducts()
-  const products = await fetchAPI("/products")
+  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products`)
+  const products = await response.json()
   return {
     paths: products.map(({ handle, category }) => {
       return {
