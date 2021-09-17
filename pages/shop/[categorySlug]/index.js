@@ -12,9 +12,13 @@ const CategoryPage = ({ category }) => {
   return (
     <div>
       <Head>
-        <title>{category.name} products</title>
+        <title>{category?.name} products</title>
       </Head>
-      <ProductsList products={category.products} />
+
+      {
+      category && category.products && <ProductsList products={category?.products} />
+
+      }
     </div>
   )
 }
@@ -23,21 +27,25 @@ export default CategoryPage
 
 export async function getStaticProps({ params }) {
   // const category = await getCategory(params.categorySlug)
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories?slug=${params.categorySlug}`)
-  const category = response.json()
+  const response = await fetch(`https://staffstore-backend-demo.herokuapp.com/categories?slug=${params.categorySlug}`)
+  const category = await response.json()
   return { props: { category } }
 }
 
 export async function getStaticPaths() {
   // const categories = await getCategories()
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories`)
+  
+  const response = await fetch(`https://staffstore-backend-demo.herokuapp.com/categories`)
   const categories = await response.json()
-  return {
-    paths: categories.map((_category) => {
+
+
+  const paths = categories?.map((_category) => {
       return {
         params: { categorySlug: _category.slug },
       }
-    }),
-    fallback: true,
+    })
+  return {
+    paths,
+    fallback: 'blocking',
   }
 }
