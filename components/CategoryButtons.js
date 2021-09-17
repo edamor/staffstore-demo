@@ -8,13 +8,14 @@ const CategoryButtons = ({ categories = [] }) => {
           Home
         </a>
       </Link>
-      { categories.length > 0 && categories.map((_category) => (
-        <Link href={`/shop/${_category.slug}`} key={_category.id}>
-          <a className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-            {_category.name}
-          </a>
-        </Link>
-      ))}
+      { 
+        categories.map((_category) => (
+          <Link href={`/shop/${_category.slug}`} key={_category.id}>
+            <a className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              {_category.name}
+            </a>
+          </Link>
+        ))}
     </div>
   )
 }

@@ -17,8 +17,7 @@ const ProductPage = ({ product }) => {
       </Head>
       <div className="rounded-t-lg pt-2 pb-2 m-auto h-80 w-80">
         {
-          product && product.images && product.images.length > 0 && <NextImage media={product?.images[0]} />
-
+          product?.images && <NextImage media={product?.images[0]} />
         }
         {/* <img {...product.images[0]} /> */}
       </div>
@@ -59,7 +58,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   // const products = await getProducts()
-  const response = await fetch(`https://staffstore-backend-demo.herokuapp.com/products`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products`)
   const products = await response.json()
 
   const paths = products?.map(({ handle, category }) => {
@@ -69,6 +68,6 @@ export async function getStaticPaths() {
     })
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   }
 }
