@@ -14,5 +14,7 @@ module.exports = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  }
+  },
+  generateEtags: false,
+
 }
