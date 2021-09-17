@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 import NextImage from "@/components/Image"
-import { getProducts, getProduct } from "@/utils/api"
+import { getProducts, getProduct, fetchAPI } from "@/utils/api"
 import Disclaimer from "@/components/Disclaimer"
 
 const ProductPage = ({ product }) => {
@@ -48,12 +48,14 @@ const ProductPage = ({ product }) => {
 export default ProductPage
 
 export async function getStaticProps({ params }) {
-  const product = await getProduct(params.productHandle)
+  // const product = await getProduct(params.productHandle)
+  const product = await fetchAPI(`/products?handle=${slug}`)
   return { props: { product } }
 }
 
 export async function getStaticPaths() {
-  const products = await getProducts()
+  // const products = await getProducts()
+  const products = await fetchAPI("/products")
   return {
     paths: products.map(({ handle, category }) => {
       return {
