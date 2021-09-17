@@ -32,7 +32,3 @@ export async function getProduct(slug) {
   return products?.[0];
 }
 
-export async function getNavItems() {
-  const navItems = await fetchAPI(`/nav-items`);
-  return navItems; 
-}
