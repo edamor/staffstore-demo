@@ -3,6 +3,7 @@ import Head from "next/head"
 import Layout from "@/components/Layout"
 import { fetchAPI, getNavItems } from "@/utils/api"
 import "styles/index.css"
+import { navItems } from "static/data"
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -26,8 +27,7 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx)
   // Fetch global site settings from Strapi
   // const navItems = await getNavItems()
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/nav-items`)
-  const navItems = await response.json()
+  const navItems = navItems;
   // Pass the data to our page via props
   return { ...appProps, pageProps: { navItems, path: ctx.pathname } }
 }

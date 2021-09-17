@@ -7,7 +7,7 @@ module.exports = {
     autoPrerender: false,
   },
   env: {
-    NEXT_PUBLIC_STRAPI_API_URL: "https://staffstore-backend-demo.herokuapp.com/"
+    NEXT_PUBLIC_STRAPI_API_URL: "https://staffstore-backend-demo.herokuapp.com"
   },
   eslint: {
     ignoreDuringBuilds: true,
