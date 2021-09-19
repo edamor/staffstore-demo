@@ -1,7 +1,6 @@
-import Head from "next/head"
 import { useRouter } from "next/router"
 import NextImage from "@/components/Image"
-import { getProducts, getProduct, fetchAPI } from "@/utils/api"
+import { getProducts, getProduct } from "@/utils/api"
 import Disclaimer from "@/components/Disclaimer"
 import { Meta } from "@/components/Meta"
 import { getContactDetails } from "@/staticData/data"
