@@ -2,7 +2,7 @@ import App from "next/app"
 import Head from "next/head"
 import Layout from "@/components/Layout"
 import "styles/index.css"
-import { getNavItems } from "static/data"
+import { getNavItems } from "staticData/data"
 
 const MyApp = ({ Component, pageProps }) => {
   return (

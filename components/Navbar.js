@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
       <div className="flex flex-col text-xs md:text-base">
         <div className="text-center w-full font-semibold">
-          217 Sabina Bldg., Pilar Road, Almanza, Las Piñas City, Metro Manila, Philippines
+          Bldg 328 Sabina, 60 Pilar rd., Almanza Uno, Las Piñas, 1750 Metro Manila
         </div>
         <div className="flex flex-wrap justify-around">
           <span className="font-semibold">Mobile: 0926-099-5188</span>

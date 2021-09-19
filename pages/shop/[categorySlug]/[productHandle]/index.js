@@ -13,20 +13,20 @@ const ProductPage = ({ product }) => {
   return (
     <div className="m-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 mt-8">
       <Head>
-        <title>{product?.title} product</title>
+        <title>{product.title} product</title>
       </Head>
       <div className="rounded-t-lg pt-2 pb-2 m-auto h-80 w-80">
         {
-          product?.images && <NextImage media={product?.images[0]} />
+          <NextImage media={product.images[0]} />
         }
         {/* <img {...product.images[0]} /> */}
       </div>
       <div className="w-full p-5 flex flex-col justify-between gap-3">
         <div>
           <h4 className="mt-1 font-semibold text-lg leading-tight truncate text-gray-700">
-            {product?.title} - ₱{product?.price}
+            {product.title} - ₱{product.price}
           </h4>
-          <div className="mt-1 text-gray-600">{product?.description}</div>
+          <div className="mt-1 text-gray-600">{product.description}</div>
         </div>
         <div className="text-gray-600 text-sm md:text-base leading-tight">
           <p className="font-semibold">Contact Us</p>
@@ -50,16 +50,16 @@ const ProductPage = ({ product }) => {
 export default ProductPage
 
 export async function getStaticProps({ params }) {
-  // const product = await getProduct(params.productHandle)
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?handle=${params.productHandle}`)
-  const product = await response.json()
+  const product = await getProduct(params.productHandle)
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?handle=${params.productHandle}`)
+  // const product = await response.json()
   return { props: { product } }
 }
 
 export async function getStaticPaths() {
-  // const products = await getProducts()
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products`)
-  const products = await response.json()
+  const products = await getProducts()
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products`)
+  // const products = await response.json()
 
   const paths = products?.map(({ handle, category }) => {
       return {
@@ -68,6 +68,6 @@ export async function getStaticPaths() {
     })
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }

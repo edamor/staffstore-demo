@@ -12,12 +12,11 @@ const CategoryPage = ({ category }) => {
   return (
     <div>
       <Head>
-        <title>{category?.name} products</title>
+        <title>{category.name} products</title>
       </Head>
 
-      {
-        category.products && <ProductsList products={category?.products} />
-      }
+      <ProductsList products={category.products} />
+      
     </div>
   )
 }
@@ -25,17 +24,17 @@ const CategoryPage = ({ category }) => {
 export default CategoryPage
 
 export async function getStaticProps({ params }) {
-  // const category = await getCategory(params.categorySlug)
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories?slug=${params.categorySlug}`)
-  const category = await response.json()
+  const category = await getCategory(params.categorySlug)
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories?slug=${params.categorySlug}`)
+  // const category = await response.json()
   return { props: { category } }
 }
 
 export async function getStaticPaths() {
-  // const categories = await getCategories()
+  const categories = await getCategories()
   
-  const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories`)
-  const categories = await response.json()
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/categories`)
+  // const categories = await response.json()
 
 
   const paths = categories?.map((_category) => {
@@ -45,6 +44,6 @@ export async function getStaticPaths() {
     })
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
