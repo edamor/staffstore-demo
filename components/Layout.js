@@ -12,10 +12,10 @@ const Layout = ({ children }) => {
     <div className="flex justify-center bg-gray-200">
       <div className="max-w-screen-lg flex flex-col min-h-screen w-full">
         <Navbar contactDetails={contactDetails} />
-        <CategoryButtons categories={navItems} />
-        <div className="flex-grow">
-          {children}
-        </div>
+        <CategoryButtons categories={navItems} />        
+          <div className="flex-grow" >
+            {children}
+          </div>
         <Footer />
       </div>
     </div>

@@ -1,7 +1,6 @@
-import Head from "next/head"
 import { useRouter } from "next/router"
 import ProductsList from "@/components/ProductsList"
-import { fetchAPI, getCategories, getCategory } from "@/utils/api"
+import { getCategories, getCategory } from "@/utils/api"
 import { Meta } from "@/components/Meta"
 
 const CategoryPage = ({ category }) => {
@@ -11,12 +10,10 @@ const CategoryPage = ({ category }) => {
   }
 
   return (
-    <div>
+    <>
       <Meta title={`Cofta Monobloc Furniture`} />
-
       <ProductsList products={category.products} />
-      
-    </div>
+    </>
   )
 }
 

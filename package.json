@@ -11,6 +11,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "framer-motion": "^4.1.17",
     "next": "11.0.0",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-preset-env": "^6.7.0",

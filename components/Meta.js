@@ -5,7 +5,7 @@ export const Meta = ({ title }) => {
     return (
       <>
         <Head>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <link rel="icon" href="/favicon-32.png" />
           <title>{`${title} | Staffstore Inc`}</title>
           <meta 

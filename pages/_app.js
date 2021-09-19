@@ -2,8 +2,10 @@ import App from "next/app"
 import Head from "next/head"
 import Layout from "@/components/Layout"
 import "styles/index.css"
+import { AnimatePresence } from "framer-motion"
+import { Motion } from "@/components/Motion"
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps, router }) => {
   return (
     <>
       <Head>
@@ -15,7 +17,11 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <Layout>
-        <Component {...pageProps} />
+        <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)} >
+          <Motion key={router.route}>
+            <Component {...pageProps} key={router.route} />
+          </Motion>
+        </AnimatePresence>
       </Layout>
     </>
   )
