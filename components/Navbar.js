@@ -1,7 +1,7 @@
 import Link from "next/link"
 import NextImage from "@/components/Image"
 
-const Navbar = () => {
+const Navbar = ({contactDetails}) => {
   return (
     <div className="ml-6 mr-6 mt-4">
       <div className="flex justify-center">
@@ -19,11 +19,11 @@ const Navbar = () => {
       </div>
       <div className="flex flex-col text-xs md:text-base">
         <div className="text-center w-full font-semibold">
-          Bldg 328 Sabina, 60 Pilar rd., Almanza Uno, Las Piñas, 1750 Metro Manila
+          {contactDetails.address}
         </div>
         <div className="flex flex-wrap justify-around">
-          <span className="font-semibold">Mobile: 0926-099-5188</span>
-          <span className="font-semibold">Landline: 8801-6349, 8806-8723, 8805-5927</span>
+          <span className="font-semibold">{`Mobile: ${contactDetails.mobile}`}</span>
+          <span className="font-semibold">{`Landline: ${contactDetails.landline}`}</span>
           <div className="flex gap-2">
             <span className="font-semibold">Facebook: </span>
             <span>

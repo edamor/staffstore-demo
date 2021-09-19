@@ -4,8 +4,7 @@ module.exports = {
     domains: ['i.ibb.co', 'via.placeholder.com'],
   },
   env: {
-    NEXT_PUBLIC_STRAPI_API_URL: "https://staffstore-backend-demo.herokuapp.com",
-    // NEXT_PUBLIC_STRAPI_API_URL: "http://localhost:1337"
+    NEXT_PUBLIC_STRAPI_API_URL: "https://staffstore-backend-demo.herokuapp.com"
   },
   eslint: {
     ignoreDuringBuilds: true,
