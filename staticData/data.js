@@ -21,4 +21,12 @@ export const getNavItems = () => (
       updated_at:"2021-09-15T04:56:55.000Z"
     }
   ]
-) 
+)
+
+export const getContactDetails = () => (
+  {
+    address: "328 Pilar Road, 60 Sabina Bldg., Almanza Uno, Las Piñas, 1750 Metro Manila",
+    mobile: "0926-099-5188",
+    landline: "8801-6349, 8806-8723, 8805-5927"
+  }
+)

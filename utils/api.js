@@ -32,9 +32,4 @@ export async function getProduct(slug) {
   return products?.[0];
 }
 
-export async function getContactDetails() {
-  const contactDetails = await fetchAPI(`/contact-details`);
-  return contactDetails;
-}
-
 

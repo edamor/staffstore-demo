@@ -2,8 +2,7 @@ import App from "next/app"
 import Head from "next/head"
 import Layout from "@/components/Layout"
 import "styles/index.css"
-import { getNavItems } from "staticData/data"
-import { getContactDetails } from "@/utils/api"
+import { getNavItems, getContactDetails } from "staticData/data"
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -33,7 +32,7 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx)
   
   const navItems = getNavItems();
-  const contactDetails = await getContactDetails();
+  const contactDetails = getContactDetails();
   // Pass the data to our page via props
   return { ...appProps, pageProps: { navItems, contactDetails, path: ctx.pathname } }
 }

@@ -4,12 +4,15 @@ import NextImage from "@/components/Image"
 import { getProducts, getProduct, fetchAPI } from "@/utils/api"
 import Disclaimer from "@/components/Disclaimer"
 import { Meta } from "@/components/Meta"
+import { getContactDetails } from "@/staticData/data"
 
 const ProductPage = ({ product }) => {
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading product...</div>
   }
+
+  const { mobile, landline } = getContactDetails();
 
   return (
     <div className="m-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 mt-8">
@@ -27,14 +30,10 @@ const ProductPage = ({ product }) => {
         <div className="text-gray-600 text-sm md:text-base leading-tight">
           <p className="font-semibold">Contact Us</p>
           <div>
-            <span>Mobile: </span>
-            <span>0926-0995188</span>
+            <span>{`Mobile: ${mobile}`}</span>
           </div>
           <div>
-            <span>Landline: </span>
-            <span>8801-6349, </span>
-            <span>8806-8723, </span>
-            <span>8805-5927</span>
+            <span>{`Landline: ${landline}`}</span>
           </div>
         </div>
         <Disclaimer />
